@@ -1,4 +1,4 @@
-package com.example.anadirg;
+package com.example.controldegastos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class AnadirGasto extends AppCompatActivity {
 
     private Spinner spinnerCat, spinnerFrec;
     private EditText et1,et2;
