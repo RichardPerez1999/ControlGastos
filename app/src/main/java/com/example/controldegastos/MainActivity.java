@@ -9,21 +9,39 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
+  @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Button vgas=(Button) findViewById(R.id.button_VerGasto);
-        vgas.setOnClickListener(new View.OnClickListener() {
+        vgas.setOnClickListener(new View.OnClickListener()
+
+
+        {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ( view.getContext(), MesDia.class);
                 startActivityForResult(intent, 0);
             }
-        });
+        }
+
+        );
+
+
+      Button adgas=(Button) findViewById(R.id.button_AddGastos);
+      adgas.setOnClickListener(new View.OnClickListener()
+
+                               {
+                                  @Override
+                                  public void onClick(View view) {
+                                      Intent intent = new Intent ( view.getContext(), AnadirGasto.class);
+                                      startActivityForResult(intent, 0);
+                                  }
+                              }
+
+      );
 
     }
-
 
 }

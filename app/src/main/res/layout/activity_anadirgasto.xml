@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".AnadirGasto">
 
     <TextView
         android:id="@+id/textFecha"
@@ -28,14 +28,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="172dp"
-        android:layout_marginLeft="172dp"
         android:layout_marginTop="32dp"
         android:background="@android:color/holo_blue_dark"
         android:text="@string/buttonAgregar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerFrec"
-        app:layout_constraintVertical_bias="0.515" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textMonto"
@@ -116,7 +115,6 @@
         android:layout_width="230dp"
         android:layout_height="29dp"
         android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
         android:layout_marginTop="56dp"
         android:background="#9ACCFA"
         android:entries="@array/categorias"
@@ -130,15 +128,16 @@
         android:id="@+id/spinnerFrec"
         android:layout_width="230dp"
         android:layout_height="29dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="24dp"
         android:background="#9ACCFA"
         android:entries="@array/categorias"
         android:spinnerMode="dropdown"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textFrec"
+        app:layout_constraintVertical_bias="0.0"
         tools:visibility="visible" />
 
     <TextView

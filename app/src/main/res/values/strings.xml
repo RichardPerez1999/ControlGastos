@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Control de Gastos</string>
+    <string name="textMonto">Monto</string>
+    <string name="textFecha">Fecha</string>
+    <string name="textHora">Hora</string>
+    <string name="textCategoria">Categoria</string>
+    <string name="textFrec">Frecuencia Diaria</string>
+    <string name="InMonto"></string>
+    <string name="buttonFecha"></string>
+    <string name="InHora"></string>
+    <string name="buttonAgregar">Agregar</string>
 </resources>
