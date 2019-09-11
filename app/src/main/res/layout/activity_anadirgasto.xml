@@ -4,47 +4,114 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AnadirGasto">
-
-    <TextView
-        android:id="@+id/textFecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:text="@string/textFecha"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textMonto"
-        app:layout_constraintVertical_bias="0.17" />
+    tools:context=".AnadirGasto"
+    tools:layout_editor_absoluteY="81dp">
 
     <Button
         android:id="@+id/buttonAgregar"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="501dp"
+        android:layout_marginEnd="161dp"
+        android:layout_marginBottom="54dp"
         android:background="@android:color/holo_blue_dark"
         android:text="@string/buttonAgregar"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerFrec"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerFrec"
+        android:layout_width="230dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="424dp"
+        android:layout_marginEnd="145dp"
+        android:layout_marginBottom="150dp"
+        android:background="#9ACCFA"
+        android:entries="@array/categorias"
+        android:spinnerMode="dropdown"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textFrec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="394dp"
+        android:layout_marginEnd="265dp"
+        android:layout_marginBottom="190dp"
+        android:text="@string/textFrec"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textMonto"
         android:layout_width="54dp"
         android:layout_height="24dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginEnd="312dp"
+        android:layout_marginBottom="454dp"
         android:text="@string/textMonto"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="189dp"
+        android:layout_marginEnd="318dp"
+        android:layout_marginBottom="390dp"
+        android:text="@string/textFecha"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="335dp"
+        android:layout_marginEnd="298dp"
+        android:layout_marginBottom="244dp"
+        android:text="@string/textCategoria"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="178dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="380dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,103 +119,67 @@
         android:id="@+id/InMonto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="111dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="447dp"
         android:ems="10"
         android:hint="@string/InMonto"
         android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/textMonto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonFecha"
-        android:layout_width="101dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="44dp"
-        android:background="@android:drawable/ic_menu_today"
-        android:text="@string/buttonFecha"
-        app:layout_constraintStart_toEndOf="@+id/textFecha"
-        app:layout_constraintTop_toBottomOf="@+id/InMonto" />
 
     <TextView
         android:id="@+id/textHora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="266dp"
+        android:layout_marginEnd="334dp"
+        android:layout_marginBottom="313dp"
         android:text="@string/textHora"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textFecha" />
-
-    <EditText
-        android:id="@+id/InHora"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:hint="@string/InHora"
-        android:inputType="time"
-        app:layout_constraintStart_toEndOf="@+id/textHora"
-        app:layout_constraintTop_toBottomOf="@+id/buttonFecha" />
-
-    <TextView
-        android:id="@+id/textCategoria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="56dp"
-        android:text="@string/textCategoria"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textHora" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
         android:id="@+id/spinnerCat"
         android:layout_width="230dp"
         android:layout_height="29dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="56dp"
-        android:background="#9ACCFA"
-        android:entries="@array/categorias"
-        android:spinnerMode="dropdown"
-        android:visibility="visible"
-        app:layout_constraintStart_toEndOf="@+id/textCategoria"
-        app:layout_constraintTop_toBottomOf="@+id/InHora"
-        tools:visibility="visible" />
-
-    <Spinner
-        android:id="@+id/spinnerFrec"
-        android:layout_width="230dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="137dp"
+        android:layout_marginTop="346dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="228dp"
         android:background="#9ACCFA"
         android:entries="@array/categorias"
         android:spinnerMode="dropdown"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textFrec"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
-    <TextView
-        android:id="@+id/textFrec"
+    <EditText
+        android:id="@+id/InHora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="64dp"
-        android:text="@string/textFrec"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="256dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="302dp"
+        android:ems="10"
+        android:hint="@string/InHora"
+        android:inputType="time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCategoria" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
