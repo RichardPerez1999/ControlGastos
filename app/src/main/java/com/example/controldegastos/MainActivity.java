@@ -42,6 +42,31 @@ public class MainActivity extends AppCompatActivity {
 
       );
 
+      Button versal=(Button) findViewById(R.id.button_Saldo);
+      versal.setOnClickListener(new View.OnClickListener()
+
+                               {
+                                   @Override
+                                   public void onClick(View view) {
+                                       Intent intent = new Intent ( view.getContext(), VerFondo.class);
+                                       startActivityForResult(intent, 0);
+                                   }
+                               }
+
+      );
+
+      Button agrfon=(Button) findViewById(R.id.button3);
+      agrfon.setOnClickListener(new View.OnClickListener()
+
+                                {
+                                    @Override
+                                    public void onClick(View view) {
+                                        Intent intent = new Intent ( view.getContext(), AgregarFondo.class);
+                                        startActivityForResult(intent, 0);
+                                    }
+                                }
+
+      );
     }
 
 }

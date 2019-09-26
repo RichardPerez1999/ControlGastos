@@ -9,4 +9,7 @@
     <string name="buttonFecha"></string>
     <string name="InHora"></string>
     <string name="buttonAgregar">Agregar</string>
+    <string name="title_activity_principal">Principal</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>
