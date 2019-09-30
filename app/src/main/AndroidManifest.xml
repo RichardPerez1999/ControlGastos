@@ -11,14 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".VistasGasto"
+            android:label="@string/title_activity_vistas_gasto"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".Debito" />
         <activity android:name=".Credito" />
         <activity android:name=".AgregarFondo" />
         <activity android:name=".Efectivo" />
         <activity android:name=".VerFondo" />
         <activity android:name=".AnadirGasto" />
-        <activity android:name=".Dia" />
-        <activity android:name=".MesDia" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
