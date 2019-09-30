@@ -17,19 +17,4 @@ public class AnadirGasto extends AppCompatActivity {
     EditText edtInMonto, edtFecha,dtfHora,edtCategoria,edtspinnerFrec;
     Button buttonAgregar;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anadirgasto);
-        spinnerCat = (Spinner)findViewById(R.id.spinnerCat);
-        spinnerFrec = (Spinner)findViewById(R.id.spinnerFrec);
-
-        String [] categoriasArray ={"Comida","Ocio","Transporte","Estudio"};
-        String [] frecuenciasArray ={"1 vez","1 a 2 veces","2 a 4 veces","5 o mas"};
-
-        ArrayAdapter <String> adapterCat = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, categoriasArray);
-        spinnerCat.setAdapter(adapterCat);
-        ArrayAdapter <String> adapterFrec = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, frecuenciasArray);
-        spinnerFrec.setAdapter(adapterFrec);
-    }
 }
