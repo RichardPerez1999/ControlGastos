@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent ( view.getContext(), MesDia.class);
+                Intent intent = new Intent ( view.getContext(), VistasGasto.class);
                 startActivityForResult(intent, 0);
             }
         }
