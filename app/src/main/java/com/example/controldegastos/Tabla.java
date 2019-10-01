@@ -35,7 +35,8 @@ public class Tabla
         this.actividad = actividad;
         this.tabla = tabla;
         rs = this.actividad.getResources();
-        FILAS = COLUMNAS = 0;
+        FILAS =0;
+        COLUMNAS = 2;
         filas = new ArrayList<TableRow>();
     }
 
@@ -69,7 +70,7 @@ public class Tabla
         tabla.addView(fila);
         filas.add(fila);
 
-        FILAS++;
+
     }
 
     /**

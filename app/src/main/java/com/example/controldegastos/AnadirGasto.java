@@ -12,11 +12,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+import cz.msebera.android.httpclient.Header;
 import com.google.gson.*;
-
+import com.loopj.android.http.*;
 import com.example.controldegastos.ui.main.Gasto;
 
+import org.json.JSONObject;
+
 import java.net.URL;
+
+import cz.msebera.android.httpclient.Header;
 
 public class AnadirGasto extends AppCompatActivity {
 
@@ -25,8 +31,8 @@ public class AnadirGasto extends AppCompatActivity {
     Button buttonAgregar;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anadirgasto);
 
         Cat =(Spinner)findViewById(R.id.spinnerCat);
@@ -44,59 +50,38 @@ public class AnadirGasto extends AppCompatActivity {
         ArrayAdapter<String> adapterCat = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, CategoriasArray);
         Cat.setAdapter(adapterCat);
 
+        buttonAgregar = (Button)findViewById(R.id.buttonAgregar);
         buttonAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Gasto gasto = new Gasto(null,(String)Cat.getSelectedItem(),Fecha.getText().toString().toString(),Hora.getText().toString(),mPago.getSelectedItem().toString(),Desc.getText().toString(),Integer.parseInt(Monto.getText().toString()),Integer.parseInt(Frec.getText().toString()));
+                final Gasto gasto = new Gasto("0",(String)Cat.getSelectedItem(),Fecha.getText().toString().toString(),Hora.getText().toString(),"efectivo",Desc.getText().toString(),Integer.parseInt(Monto.getText().toString()),Integer.parseInt(Frec.getText().toString()));
 
-                new SimpleTask().execute(gasto);
+                Gson gson = new Gson();
+                String json = gson.toJson(gasto);
+                System.out.println(json);
+                RequestParams params= new RequestParams();
+                params.put("k1",json);
+                AsyncHttpClient client;
+                client = new AsyncHttpClient();
+                client . post ( "http://192.168.0.03:8080/ServerApp/Controller", params , new AsyncHttpResponseHandler ()
+                {
+                    @Override
+                    public void onSuccess ( int statusCode , Header [] headers , byte [] responseBody  ) {
+                       // super.onSuccess(statusCode,headers,responseBody);
+                        Toast.makeText(getApplicationContext(), "Envio al servidor exitoso", Toast.LENGTH_LONG).show();
+                        Monto.setText("");
+                        Fecha.setText("");
+                        Hora.setText("");
+                        Frec.setText("");
+                        Desc.setText("");
+                    }
+                    @Override
+                    public void onFailure  ( int statusCode , Header [] headers , byte [] responseBody , Throwable error) {
+                    // Codigo a ejecutar en caso de error .
+                    }
+                }) ;
             }
         });
-
     }
 
-
-
-    private class SimpleTask extends AsyncTask<Gasto,Integer,String> {
-        protected void onPreExecute() {
-            buttonAgregar.setEnabled(false);
-        }
-
-        @Override
-        protected String doInBackground(Gasto... gastos) {
-            gastos.toString();
-            Gson gson = new Gson();
-            String json = gson.toJson(gastos);
-            URL url = null;
-
-            return "Gasto Enviado al servidor";
-        }
-
-
-
-
-
-
-        protected void onPostExecute (Result result){
-            buttonAgregar.setEnabled(true);
-        }
-
-
-        /*
-        Se hace visible el botón "Cancelar" y se desactiva
-        el botón "Ordenar"
-         */
-
-
-
-    }
-
-
-
-   /* private void EjecutarServicio(){
-        Gasto gasto = new Gasto(null,(String)Cat.getSelectedItem(),Fecha.getText().toString().toString(),Hora.getText().toString(),mPago.getSelectedItem().toString(),Desc.getText().toString(),Integer.parseInt(Monto.getText().toString()),Integer.parseInt(Frec.getText().toString()));
-        gasto.toString();
-        Gson gson = new Gson();
-        String json = gson.toJson(gasto);
-    }*/
 }

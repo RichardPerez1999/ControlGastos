@@ -32,7 +32,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         //return PlaceholderFragment.newInstance(position + 1);
         switch ( position){
             case 0:
-                DiaFragment diaFragment= new DiaFragment();
+                DiaFragment diaFragment= new DiaFragment(mContext);
                 return diaFragment;
             case 1:
                 MesFragment mesFragment= new MesFragment();
