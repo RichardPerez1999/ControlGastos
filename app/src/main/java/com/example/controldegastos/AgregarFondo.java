@@ -20,7 +20,7 @@ public class AgregarFondo extends AppCompatActivity {
                                   {
                                       @Override
                                       public void onClick(View view) {
-                                          Intent intent = new Intent ( view.getContext(), Efectivo.class);
+                                          Intent intent = new Intent ( view.getContext(), AnadirEfectivo.class);
                                           startActivityForResult(intent, 0);
                                       }
                                   }
@@ -33,7 +33,7 @@ public class AgregarFondo extends AppCompatActivity {
                                  {
                                      @Override
                                      public void onClick(View view) {
-                                         Intent intent = new Intent ( view.getContext(), Credito.class);
+                                         Intent intent = new Intent ( view.getContext(), AnadirCredito.class);
                                          startActivityForResult(intent, 0);
                                      }
                                  }
@@ -46,7 +46,7 @@ public class AgregarFondo extends AppCompatActivity {
                                 {
                                     @Override
                                     public void onClick(View view) {
-                                        Intent intent = new Intent ( view.getContext(), Debito.class);
+                                        Intent intent = new Intent ( view.getContext(), AnadirDebito.class);
                                         startActivityForResult(intent, 0);
                                     }
                                 }

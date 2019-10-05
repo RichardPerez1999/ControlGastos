@@ -1,63 +1,42 @@
 package com.example.controldegastos;
+import cz.msebera.android.httpclient.Header;
 
-import androidx.annotation.Nullable;
+import com.example.controldegastos.ui.main.Efectivo;
+import com.google.gson.*;
+import com.loopj.android.http.*;
+import com.example.controldegastos.ui.main.Gasto;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.JsonReader;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-import cz.msebera.android.httpclient.Header;
-import com.google.gson.*;
-import com.loopj.android.http.*;
-import com.example.controldegastos.ui.main.Gasto;
 
-import org.json.JSONObject;
+public class AnadirEfectivo extends AppCompatActivity {
 
-import java.net.URL;
-
-import cz.msebera.android.httpclient.Header;
-
-public class AnadirGasto extends AppCompatActivity {
-
-    Spinner Cat, mPago;
-    EditText Monto, Fecha, Hora, Frec, Desc;
+    EditText Monto, Fecha, Desc;
     Button buttonAgregar;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anadirgasto);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ingresos);
 
-        Cat =(Spinner)findViewById(R.id.spinnerCat);
-        Frec =(EditText)findViewById(R.id.InFrec);
-        mPago = (Spinner)findViewById(R.id.spinnerMetodo);
         Monto = (EditText)findViewById(R.id.InMonto);
         Fecha = (EditText)findViewById(R.id.InFecha);
-        Hora = (EditText)findViewById(R.id.InHora);
         Desc = (EditText)findViewById(R.id.InDescripcion);
         buttonAgregar = (Button)findViewById(R.id.buttonAgregar);
-
-        String [] CategoriasArray = {"Hogar", "Salud", "Transporte", "Ropa y calzado", "Cuentas y pagos", "Seguros", "Estetica", "Diversion", "Otros gastos"};
-        String [] MetodosArray;
-
-        ArrayAdapter<String> adapterCat = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, CategoriasArray);
-        Cat.setAdapter(adapterCat);
 
         buttonAgregar = (Button)findViewById(R.id.buttonAgregar);
         buttonAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Gasto gasto = new Gasto("0",(String)Cat.getSelectedItem(),Fecha.getText().toString().toString(),Hora.getText().toString(),"efectivo",Desc.getText().toString(),Integer.parseInt(Monto.getText().toString()),Integer.parseInt(Frec.getText().toString()));
+                final Efectivo efectivo = new Efectivo(0,Fecha.getText().toString(),Desc.getText().toString(),Integer.parseInt(Monto.getText().toString()));
 
                 Gson gson = new Gson();
-                String json = gson.toJson(gasto);
+                String json = gson.toJson(efectivo);
                 System.out.println(json);
                 RequestParams params= new RequestParams();
                 params.put("k1",json);
@@ -67,22 +46,19 @@ public class AnadirGasto extends AppCompatActivity {
                 {
                     @Override
                     public void onSuccess ( int statusCode , Header [] headers , byte [] responseBody  ) {
-                       // super.onSuccess(statusCode,headers,responseBody);
+                        // super.onSuccess(statusCode,headers,responseBody);
                         Toast.makeText(getApplicationContext(), "Envio al servidor exitoso", Toast.LENGTH_LONG).show();
                         Monto.setText("");
                         Fecha.setText("");
-                        Hora.setText("");
-                        Frec.setText("");
                         Desc.setText("");
                     }
                     @Override
                     public void onFailure  ( int statusCode , Header [] headers , byte [] responseBody , Throwable error) {
-                    // Codigo a ejecutar en caso de error .
+                        // Codigo a ejecutar en caso de error .
                         Toast.makeText(getApplicationContext(), "Error en el envio al servidor", Toast.LENGTH_LONG).show();
                     }
                 }) ;
             }
         });
     }
-
 }

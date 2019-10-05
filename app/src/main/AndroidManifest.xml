@@ -15,10 +15,10 @@
             android:name=".VistasGasto"
             android:label="@string/title_activity_vistas_gasto"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Debito" />
-        <activity android:name=".Credito" />
+        <activity android:name=".AnadirDebito" />
+        <activity android:name=".AnadirCredito" />
         <activity android:name=".AgregarFondo" />
-        <activity android:name=".Efectivo" />
+        <activity android:name=".AnadirEfectivo" />
         <activity android:name=".VerFondo" />
         <activity android:name=".AnadirGasto" />
         <activity android:name=".MainActivity">

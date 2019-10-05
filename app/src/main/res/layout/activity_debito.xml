@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Credito">
+    tools:context=".AnadirCredito">
 
     <TextView
         android:id="@+id/textView6"
@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.16" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/spinnerTar"
         android:layout_width="234dp"
         android:layout_height="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,7 @@
         app:layout_constraintVertical_bias="0.29" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/InDigitos"
         android:layout_width="85dp"
         android:layout_height="49dp"
         android:ems="10"
@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.442" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/InCupo"
         android:layout_width="160dp"
         android:layout_height="47dp"
         android:ems="10"
@@ -104,7 +104,7 @@
         app:layout_constraintVertical_bias="0.588" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/InCuota"
         android:layout_width="112dp"
         android:layout_height="43dp"
         android:ems="10"
@@ -117,7 +117,7 @@
         app:layout_constraintVertical_bias="0.578" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/buttonAgregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agregar"
