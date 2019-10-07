@@ -3,12 +3,12 @@ package com.example.controldegastos.ui.main;
 public class TarjetaDebito {
 
     private String Tipo;
-    private int Digitos,Cupo,Cuota;
+    private int Digitos,Disponible,Cuota;
 
-    public TarjetaDebito(String tipo, int digitos, int cupo, int cuota) {
+    public TarjetaDebito(String tipo, int digitos, int disponible, int cuota) {
         Tipo = tipo;
         Digitos = digitos;
-        Cupo = cupo;
+        Disponible = disponible;
         Cuota = cuota;
     }
 
@@ -28,12 +28,12 @@ public class TarjetaDebito {
         Digitos = digitos;
     }
 
-    public int getCupo() {
-        return Cupo;
+    public int getDisponible() {
+        return Disponible;
     }
 
-    public void setCupo(int cupo) {
-        Cupo = cupo;
+    public void setDisponible(int disponible) {
+        Disponible = disponible;
     }
 
     public int getCuota() {

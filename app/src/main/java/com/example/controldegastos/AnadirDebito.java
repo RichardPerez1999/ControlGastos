@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.controldegastos.ui.main.GsonMetodo;
 import com.example.controldegastos.ui.main.TarjetaCredito;
 import com.example.controldegastos.ui.main.TarjetaDebito;
 import com.google.gson.Gson;
@@ -22,17 +23,16 @@ import cz.msebera.android.httpclient.Header;
 public class AnadirDebito extends AppCompatActivity {
     EditText Digitos, Cupo,Cuota;
     Button buttonAgregar;
-    private Spinner spinnerTar;
+    private Spinner spinnerX;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_debito);
-        spinnerTar = (Spinner)findViewById(R.id.spinnerTar);
+        spinnerX = (Spinner)findViewById(R.id.spinner);
         String [] Tipos ={"Visa", "MasterCard" ,"Diners Club","American Express"};
 
         ArrayAdapter<String> adapterCat = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, Tipos);
-        spinnerTar.setAdapter(adapterCat);
-        spinnerTar =(Spinner)findViewById(R.id.spinnerTar);
+        spinnerX.setAdapter(adapterCat);
         Digitos = (EditText)findViewById(R.id.InDigitos);
         Cupo = (EditText)findViewById(R.id.InCupo);
         Cuota = (EditText)findViewById(R.id.InCuota);
@@ -41,16 +41,15 @@ public class AnadirDebito extends AppCompatActivity {
         buttonAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final TarjetaDebito TD = new TarjetaDebito((String)spinnerTar.getSelectedItem(),Integer.parseInt(Digitos.getText().toString()),Integer.parseInt(Cupo.getText().toString()),Integer.parseInt(Cuota.getText().toString()));
+                final TarjetaDebito TD = new TarjetaDebito((String)spinnerX.getSelectedItem(),Integer.parseInt(Digitos.getText().toString()),Integer.parseInt(Cupo.getText().toString()),Integer.parseInt(Cuota.getText().toString()));
 
-                Gson gson = new Gson();
-                String json = gson.toJson(TD);
-                System.out.println(json);
+                GsonMetodo<TarjetaDebito> gson = new GsonMetodo<TarjetaDebito>();
+                String json = gson.convertToJson(TD);
                 RequestParams params= new RequestParams();
-                params.put("k1",json);
+                params.put("debito",json);
                 AsyncHttpClient client;
                 client = new AsyncHttpClient();
-                client . post ( "http://192.168.0.8:51785/ServerApp/Controller", params , new AsyncHttpResponseHandler()
+                client . post ( "http://192.168.0.108:51414/ServerApp/Controller", params , new AsyncHttpResponseHandler()
                 {
                     @Override
                     public void onSuccess (int statusCode , Header[] headers , byte [] responseBody  ) {

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.controldegastos.ui.main.Efectivo;
 import com.example.controldegastos.ui.main.Gasto;
+import com.example.controldegastos.ui.main.GsonMetodo;
 import com.example.controldegastos.ui.main.TarjetaCredito;
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
@@ -30,16 +31,17 @@ public class AnadirCredito extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credito);
+        spinnerTar =(Spinner)findViewById(R.id.spinnerTj);
+        Digitos = (EditText)findViewById(R.id.InDigitos);
+        Interes = (EditText)findViewById(R.id.InInteres);
+        Cupo = (EditText)findViewById(R.id.InCupo);
+        Cuota = (EditText)findViewById(R.id.InCuota);
         String [] Tipos ={"Visa", "MasterCard" ,"Diners Club","American Express"};
 
         ArrayAdapter<String> adapterCat = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, Tipos);
         spinnerTar.setAdapter(adapterCat);
 
-        spinnerTar =(Spinner)findViewById(R.id.spinnerTar);
-        Digitos = (EditText)findViewById(R.id.InDigitos);
-        Interes = (EditText)findViewById(R.id.InInteres);
-        Cupo = (EditText)findViewById(R.id.InCupo);
-        Cuota = (EditText)findViewById(R.id.InCuota);
+
 
         buttonAgregar = (Button)findViewById(R.id.buttonAgregar);
         buttonAgregar.setOnClickListener(new View.OnClickListener() {
@@ -47,14 +49,13 @@ public class AnadirCredito extends AppCompatActivity {
             public void onClick(View view) {
                 final TarjetaCredito TC = new TarjetaCredito(Integer.parseInt(Digitos.getText().toString()),(String)spinnerTar.getSelectedItem(),Integer.parseInt(Cupo.getText().toString()),Integer.parseInt(Cuota.getText().toString()),Double.parseDouble(Interes.getText().toString()));
 
-                Gson gson = new Gson();
-                String json = gson.toJson(TC);
-                System.out.println(json);
+                GsonMetodo<TarjetaCredito> gson = new GsonMetodo<TarjetaCredito>();
+                String json = gson.convertToJson(TC);
                 RequestParams params= new RequestParams();
-                params.put("k1",json);
+                params.put("credito",json);
                 AsyncHttpClient client;
                 client = new AsyncHttpClient();
-                client . post ( "http://192.168.0.8:51785/ServerApp/Controller", params , new AsyncHttpResponseHandler()
+                client . post ( "http://192.168.0.108:51414/ServerApp/Controller", params , new AsyncHttpResponseHandler()
                 {
                     @Override
                     public void onSuccess (int statusCode , Header[] headers , byte [] responseBody  ) {

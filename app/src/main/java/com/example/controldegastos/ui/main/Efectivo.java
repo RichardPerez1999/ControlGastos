@@ -3,12 +3,12 @@ package com.example.controldegastos.ui.main;
 public class Efectivo {
 
     private String Fecha, Descripcion;
-    private int MontoEfect,CodEfectivo;
+    private int Monto,CodEfectivo;
 
-    public Efectivo(int codEfectivo,String fecha, String descripcion, int montoEfect) {
+    public Efectivo(int codEfectivo,String fecha, String descripcion, int monto) {
         Fecha = fecha;
         Descripcion = descripcion;
-        MontoEfect = montoEfect;
+        Monto = monto;
         CodEfectivo = codEfectivo;
     }
 
@@ -28,12 +28,12 @@ public class Efectivo {
         Descripcion = descripcion;
     }
 
-    public int getMontoEfect() {
-        return MontoEfect;
+    public int getMonto() {
+        return Monto;
     }
 
-    public void setMontoEfect(int montoEfect) {
-        MontoEfect = montoEfect;
+    public void setMonto(int monto) {
+        Monto = monto;
     }
 
     public int getCodEfectivo() {
