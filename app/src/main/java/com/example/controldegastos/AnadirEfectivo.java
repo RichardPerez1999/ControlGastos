@@ -3,6 +3,7 @@ import cz.msebera.android.httpclient.Header;
 
 import com.example.controldegastos.ui.main.Efectivo;
 import com.example.controldegastos.ui.main.GsonMetodo;
+import com.example.controldegastos.ui.main.Utilities;
 import com.google.gson.*;
 import com.loopj.android.http.*;
 import com.example.controldegastos.ui.main.Gasto;
@@ -20,6 +21,7 @@ public class AnadirEfectivo extends AppCompatActivity {
 
     EditText Monto, Fecha, Desc;
     Button buttonAgregar;
+    Utilities U;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,14 +37,14 @@ public class AnadirEfectivo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final Efectivo efectivo = new Efectivo(0,Fecha.getText().toString(),Desc.getText().toString(),Integer.parseInt(Monto.getText().toString()));
-
+                U = new Utilities();
                 GsonMetodo<Efectivo> gson = new GsonMetodo<Efectivo>();
                 String json = gson.convertToJson(efectivo);
                 RequestParams params= new RequestParams();
                 params.put("efectivo",json);
                 AsyncHttpClient client;
                 client = new AsyncHttpClient();
-                client . post ( "http://192.168.0.108:51414/ServerApp/Controller", params , new AsyncHttpResponseHandler ()
+                client . post ( U.url, params , new AsyncHttpResponseHandler ()
                 {
                     @Override
                     public void onSuccess ( int statusCode , Header [] headers , byte [] responseBody  ) {

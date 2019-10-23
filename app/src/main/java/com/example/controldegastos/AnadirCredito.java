@@ -14,6 +14,7 @@ import com.example.controldegastos.ui.main.Efectivo;
 import com.example.controldegastos.ui.main.Gasto;
 import com.example.controldegastos.ui.main.GsonMetodo;
 import com.example.controldegastos.ui.main.TarjetaCredito;
+import com.example.controldegastos.ui.main.Utilities;
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -26,6 +27,7 @@ public class AnadirCredito extends AppCompatActivity {
     EditText Digitos, Interes, Cupo,Cuota;
     Button buttonAgregar;
     private Spinner spinnerTar;
+    Utilities U;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +50,14 @@ public class AnadirCredito extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final TarjetaCredito TC = new TarjetaCredito(Integer.parseInt(Digitos.getText().toString()),(String)spinnerTar.getSelectedItem(),Integer.parseInt(Cupo.getText().toString()),Integer.parseInt(Cuota.getText().toString()),Double.parseDouble(Interes.getText().toString()));
-
+                U = new Utilities();
                 GsonMetodo<TarjetaCredito> gson = new GsonMetodo<TarjetaCredito>();
                 String json = gson.convertToJson(TC);
                 RequestParams params= new RequestParams();
                 params.put("credito",json);
                 AsyncHttpClient client;
                 client = new AsyncHttpClient();
-                client . post ( "http://192.168.0.108:51414/ServerApp/Controller", params , new AsyncHttpResponseHandler()
+                client . post ( U.url, params , new AsyncHttpResponseHandler()
                 {
                     @Override
                     public void onSuccess (int statusCode , Header[] headers , byte [] responseBody  ) {
@@ -65,6 +67,13 @@ public class AnadirCredito extends AppCompatActivity {
                         Interes.setText("");
                         Cupo.setText("");
                         Cuota.setText("");
+                        String s = new String(responseBody);
+
+
+                        System.out.println(s);
+
+
+
 
                     }
                     @Override
@@ -73,6 +82,7 @@ public class AnadirCredito extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Error en el envio al servidor", Toast.LENGTH_LONG).show();
                     }
                 }) ;
+
             }
         });
 
