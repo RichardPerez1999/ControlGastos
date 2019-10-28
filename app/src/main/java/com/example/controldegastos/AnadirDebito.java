@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.controldegastos.ui.main.GsonMetodo;
 import com.example.controldegastos.ui.main.TarjetaCredito;
 import com.example.controldegastos.ui.main.TarjetaDebito;
+import com.example.controldegastos.ui.main.Utilities;
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -24,6 +25,8 @@ public class AnadirDebito extends AppCompatActivity {
     EditText Digitos, Cupo,Cuota;
     Button buttonAgregar;
     private Spinner spinnerX;
+    Utilities U;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +45,14 @@ public class AnadirDebito extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final TarjetaDebito TD = new TarjetaDebito((String)spinnerX.getSelectedItem(),Integer.parseInt(Digitos.getText().toString()),Integer.parseInt(Cupo.getText().toString()),Integer.parseInt(Cuota.getText().toString()));
-
+                U = new Utilities();
                 GsonMetodo<TarjetaDebito> gson = new GsonMetodo<TarjetaDebito>();
                 String json = gson.convertToJson(TD);
                 RequestParams params= new RequestParams();
                 params.put("debito",json);
                 AsyncHttpClient client;
                 client = new AsyncHttpClient();
-                client . post ( "http://192.168.0.108:51414/ServerApp/Controller", params , new AsyncHttpResponseHandler()
+                client . post ( U.url, params , new AsyncHttpResponseHandler()
                 {
                     @Override
                     public void onSuccess (int statusCode , Header[] headers , byte [] responseBody  ) {

@@ -34,6 +34,8 @@
         android:id="@+id/button_AddGastos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="#03A9F4"
         android:text="Añadir Gasto"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
